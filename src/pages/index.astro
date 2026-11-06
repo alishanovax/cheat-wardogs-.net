@@ -6,20 +6,26 @@ import ProductsSection from '../components/ProductsSection.astro';
 import ContentSections from '../components/ContentSections.astro';
 import { t } from '../i18n';
 import { resolvePageSeo } from '../config/seo';
-import { websiteSchema } from '../utils/schema';
+import { websiteSchema, itemListSchema } from '../utils/schema';
 import { webpSrc } from '../utils/responsiveImage';
 import { PRIMARY_CHEAT_IMAGE } from '../config/siteImages';
 import SocialShare from '../components/SocialShare.astro';
+import { getHomepageBlogPosts } from '../data/blog';
+import { blogPostPath } from '../utils/path';
 
 const seo = resolvePageSeo('/');
 
 const heroLcpImage = webpSrc(PRIMARY_CHEAT_IMAGE, 512);
+const homeBlogPosts = getHomepageBlogPosts(3);
+const homeBlogItemList = itemListSchema(
+  homeBlogPosts.map((p) => ({ name: p.title, url: blogPostPath(p.slug) })),
+);
 ---
 
 <BaseLayout
   title={seo.title}
   description={seo.description}
-  jsonLd={[websiteSchema()]}
+  jsonLd={[websiteSchema(), homeBlogItemList]}
 >
   <link
     slot="head"

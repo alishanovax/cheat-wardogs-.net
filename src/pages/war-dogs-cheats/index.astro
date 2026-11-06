@@ -3,7 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import { resolvePageSeo } from '../../config/seo';
 import { PRIMARY_CHEAT_IMAGE } from '../../config/siteImages';
 import { checkoutPath } from '../../config/checkout';
-import { apexLegendsCheatsLanding } from '../../data/apexLegendsCheatsLanding';
+import { warDogsCheatsLanding } from '../../data/warDogsCheatsLanding';
 import ResponsiveImage from '../../components/ResponsiveImage.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import { breadcrumbSchema, webPageSchema } from '../../utils/schema';
@@ -11,13 +11,13 @@ import { Button } from '@/components/starwind/button';
 import { Prose } from '@/components/starwind/prose';
 import { ROUTES } from '../../utils/path';
 
-const seo = resolvePageSeo('/apex-legends-cheats/');
+const seo = resolvePageSeo('/war-dogs-cheats/');
 const breadcrumbs = [
   { name: 'Home', path: '/' },
-  { name: 'PC', path: '/apex-legends-cheats/' },
+  { name: 'PC', path: '/war-dogs-cheats/' },
 ];
-const checkout = checkoutPath('apex');
-const copy = apexLegendsCheatsLanding;
+const checkout = checkoutPath('warDogs');
+const copy = warDogsCheatsLanding;
 
 function linkify(text: string): string {
   return text.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_m, label: string, href: string) => {
@@ -31,7 +31,7 @@ function linkify(text: string): string {
   title={seo.title}
   description={seo.description}
   jsonLd={[
-    webPageSchema({ name: seo.title, description: seo.description, url: '/apex-legends-cheats/' }),
+    webPageSchema({ name: seo.title, description: seo.description, url: '/war-dogs-cheats/' }),
     breadcrumbSchema(breadcrumbs),
   ]}
 >
@@ -42,7 +42,7 @@ function linkify(text: string): string {
       <figure class="mt-6 overflow-hidden rounded-xl border border-border">
         <ResponsiveImage
           src={PRIMARY_CHEAT_IMAGE}
-          alt="Patch Utilities – PC preview — aimbot and wall ESP modules"
+          alt="War Dogs cheats PC preview — illustrative imagery until you supply final art"
           width={960}
           height={540}
           loading="eager"

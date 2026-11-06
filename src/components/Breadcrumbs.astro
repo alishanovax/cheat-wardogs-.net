@@ -1,4 +1,5 @@
 ---
+import type { HTMLAttributes } from 'astro/types';
 import type { BreadcrumbItem } from '../utils/schema';
 import {
   Breadcrumb,
@@ -9,14 +10,14 @@ import {
   BreadcrumbSeparator,
 } from '@/components/starwind/breadcrumb';
 
-interface Props {
+interface Props extends Pick<HTMLAttributes<'nav'>, 'class'> {
   items: BreadcrumbItem[];
 }
 
-const { items } = Astro.props;
+const { items, class: breadcrumbClass = 'mb-4' } = Astro.props;
 ---
 
-<Breadcrumb class="mb-4">
+<Breadcrumb class={breadcrumbClass}>
   <BreadcrumbList>
     {items.map((item, index) => {
       const isLast = index === items.length - 1;

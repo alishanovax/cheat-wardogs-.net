@@ -16,7 +16,8 @@ interface Props {
 const { titleBrand, titleAccent } = Astro.props;
 const h = t.hero;
 const heroBrand = titleBrand ?? h.h1;
-const heroAccent = titleAccent ?? h.h1Accent;
+const heroAccentRaw = titleAccent ?? h.h1Accent;
+const heroAccent = heroAccentRaw?.trim() ? heroAccentRaw : undefined;
 
 const heroMarqueePills = [
   ...heroStatusPills,
@@ -45,7 +46,11 @@ const heroMarqueePills = [
 
         <h1 id="hero-title" class="hero-title text-3xl font-bold leading-[1.08] tracking-tight md:text-4xl lg:text-[2.75rem]">
           <span class="hero-title__brand block text-foreground">{heroBrand}</span>
-          <span class="hero-title__accent mt-1 block text-primary md:mt-1.5">{heroAccent}</span>
+          {
+            heroAccent && (
+              <span class="hero-title__accent mt-1 block text-primary md:mt-1.5">{heroAccent}</span>
+            )
+          }
         </h1>
 
         <p class="max-w-xl text-sm leading-relaxed text-neutral-800 dark:text-neutral-400 md:text-base">

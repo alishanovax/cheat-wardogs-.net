@@ -2,6 +2,7 @@ import { t } from '../i18n';
 import { checkoutForSlug, checkoutPath } from '../config/checkout';
 import { PRODUCT_GALLERY_IMAGES, SITE_CHEAT_IMAGES } from '../config/siteImages';
 import type { IconName } from '../components/icons/types';
+import { PRODUCT_BASE } from '../config/site';
 
 export interface ProductSlide {
   src: string;
@@ -57,62 +58,43 @@ export interface ProductPage {
   relatedBlogSlugs: string[];
 }
 
-/** Guides paired with each product detail page */
 export const productRelatedBlogSlugs: Record<string, string[]> = {
-  lite: ['apex-esp-setup', 'apex-lite-vs-pro', 'apex-radar', 'eac-patch-day'],
-  pro: [
-    'apex-aimbot-ranked',
-    'apex-aimbot-combat',
-    'apex-lite-vs-pro',
-    'apex-stream-proof',
-  ],
+  lite: ['war-dogs-esp-setup', 'war-dogs-lite-vs-pro', 'war-dogs-radar', 'war-dogs-patch-day'],
+  pro: ['war-dogs-aimbot-ranked', 'war-dogs-aimbot-combat', 'war-dogs-lite-vs-pro', 'war-dogs-stream-proof'],
   elite: [
-    'apex-elite-tier',
-    'apex-cheat-features',
-    'apex-esp-setup',
-    'eac-patch-day',
-    'buy-apex-legends-cheats',
+    'war-dogs-elite-tier',
+    'war-dogs-cheat-features',
+    'war-dogs-esp-setup',
+    'war-dogs-patch-day',
+    'buy-war-dogs-cheats',
   ],
-  'hwid-spoofer': [
-    'apex-hwid-ban',
-    'eac-troubleshooting',
-    'eac-patch-day',
-    'apex-external-loader',
-  ],
-  ugc: [
-    'eac-troubleshooting',
-    'apex-hwid-ban',
-    'buy-apex-legends-cheats',
-  ],
-  'unlock-all': [
-    'apex-loadouts',
-    'apex-cheat-features',
-    'apex-stream-proof',
-  ],
+  'hwid-spoofer': ['war-dogs-hwid-ban', 'war-dogs-anti-cheat-troubleshooting', 'war-dogs-patch-day', 'war-dogs-external-loader'],
+  ugc: ['war-dogs-anti-cheat-troubleshooting', 'war-dogs-hwid-ban', 'buy-war-dogs-cheats'],
+  'unlock-all': ['war-dogs-loadouts', 'war-dogs-cheat-features', 'war-dogs-stream-proof'],
 };
 
-const productBase = '/products/apex/';
+const productBase = PRODUCT_BASE;
 
 const defaultAcquisitionSteps: AcquisitionStep[] = [
   {
     num: '01',
-    title: 'Review current status',
-    desc: 'Check the live banner on apexlegendcheats.net and Discord #status before purchase—especially after a Apex Legends or Easy Anti-Cheat update.',
+    title: 'Read the listing first',
+    desc: 'Open checkout for the live module table, Windows requirements, and renewal rules.',
   },
   {
     num: '02',
-    title: 'Choose your access tier',
-    desc: 'Select Elite Apex Legends cheats or the utility that matches your goal. Review the feature list before checkout via our secure checkout.',
+    title: 'Choose a tier',
+    desc: 'Match Lite, Pro, or Elite to the goals you verified on the listing—avoid assuming features we do not duplicate here.',
   },
   {
     num: '03',
-    title: 'Contact the team',
-    desc: 'Open Discord and confirm availability, PC platform, and payment details with your order email ready.',
+    title: 'Checkout and save proof',
+    desc: 'Complete payment through checkout, store the receipt, and join Discord if onboarding emails instruct you to.',
   },
   {
     num: '04',
-    title: 'Follow guided setup',
-    desc: 'Use only the customer portal, patch loader, and setup guide. Test in a lobby, load presets, then queue ranked or Ranked.',
+    title: 'Install and test',
+    desc: 'Download only from your seller portal, test in practice, then queue live matches when status looks healthy.',
   },
 ];
 
@@ -124,51 +106,45 @@ function acquisitionFor(productName: string): ProductAcquisition {
 }
 
 const sharedGoodToKnow =
-  'Apex Legends and Easy Anti-Cheat receive frequent updates. Confirm module availability on the live status panel at apexlegendcheats.net before you purchase or launch. Overlay behavior may differ in lobbies, replays and spectator mode after patches.';
+  'War Dogs and anti-cheat systems change often. Confirm module availability with the seller before every session. Overlay behavior can differ between menus, replays, and live play.';
 
 const sharedLimitations =
-  'Third-party software in Apex Legends can violate the game terms of service and lead to anti-cheat action. You use this software at your own risk. Compatibility and availability can change after game, anti-cheat, or Windows updates without notice.';
+  'Third-party software for War Dogs can violate publisher terms and trigger enforcement. We do not claim undetected or ban-proof status. Compatibility can change after game or OS updates without notice.';
 
-const apexSystemRequirements: SystemRequirement[] = [
-  { icon: 'reqWindows', text: 'Windows 10 or Windows 11 (64-bit) with HVCI, Core Isolation, TPM and Secure Boot enabled.' },
-  { icon: 'reqEpic', text: 'Current PC build of Apex Legends with the latest patches applied.' },
-  { icon: 'reqSettings', text: 'Cloud DMA access for full functionality on supported builds.' },
-  { icon: 'reqWifi', text: 'Stable internet connection for portal access and loader updates.' },
-  { icon: 'reqCpu', text: 'Intel or AMD system that meets Apex Legends hardware requirements.' },
+const pcRequirements: SystemRequirement[] = [
+  { icon: 'reqWindows', text: 'Windows 10 or Windows 11 (64-bit) unless the seller listing says otherwise.' },
+  { icon: 'reqEpic', text: 'Current War Dogs PC client with patches installed.' },
+  { icon: 'reqSettings', text: 'Administrator rights only when the seller’s guide requires them.' },
+  { icon: 'reqWifi', text: 'Stable internet for portal access and updates.' },
+  { icon: 'reqCpu', text: 'Hardware that meets the seller’s published minimums.' },
 ];
 
 type GalleryKey = keyof typeof galleryRaw;
 
 const galleryRaw = {
   gpAimbotEsp: {
-    src: SITE_CHEAT_IMAGES[0].src,
-    alt: SITE_CHEAT_IMAGES[0].alt,
-    caption: 'Soft aim & ESP',
-    captionDesc: 'Apex Legends trainer overlays tuned for PC gunfights.',
+    src: SITE_CHEAT_IMAGES[0]!.src,
+    alt: SITE_CHEAT_IMAGES[0]!.alt,
+    caption: 'Overlay example',
+    captionDesc: 'Seller-provided War Dogs product imagery — confirm behavior on the listing.',
   },
   gpEspWallhack: {
-    src: SITE_CHEAT_IMAGES[1].src,
-    alt: SITE_CHEAT_IMAGES[1].alt,
-    caption: 'Enemy ESP',
-    captionDesc: 'Player ESP with health, health and distance in Apex Legends multiplayer.',
+    src: SITE_CHEAT_IMAGES[1]!.src,
+    alt: SITE_CHEAT_IMAGES[1]!.alt,
+    caption: 'ESP layout',
+    captionDesc: 'Readable overlays depend on your settings and tier.',
   },
   gpGameplay: {
-    src: SITE_CHEAT_IMAGES[2].src,
-    alt: SITE_CHEAT_IMAGES[2].alt,
-    caption: 'Apex Legends co-op',
-    captionDesc: 'Tactical shooter action on PC with trainer-friendly overlays.',
+    src: SITE_CHEAT_IMAGES[2]!.src,
+    alt: SITE_CHEAT_IMAGES[2]!.alt,
+    caption: 'Gameplay context',
+    captionDesc: 'Match UI varies by mode — test yours in practice.',
   },
   gpEspIndoor: {
-    src: SITE_CHEAT_IMAGES[3].src,
-    alt: SITE_CHEAT_IMAGES[3].alt,
-    caption: 'Apex combat',
-    captionDesc: 'Cel-shaded Apex Legends combat in a twilight outpost.',
-  },
-  gpCourtyard: {
-    src: SITE_CHEAT_IMAGES[4]!.src,
-    alt: SITE_CHEAT_IMAGES[4]!.alt,
-    caption: 'Apex firefight',
-    captionDesc: 'Sci-fi courtyard firefight with Legend action.',
+    src: SITE_CHEAT_IMAGES[3]!.src,
+    alt: SITE_CHEAT_IMAGES[3]!.alt,
+    caption: 'Menu inspection',
+    captionDesc: 'Verify each module against the listing before relying on it.',
   },
 };
 
@@ -185,9 +161,9 @@ function slide(...keys: GalleryKey[]): ProductSlide[] {
 }
 
 const productDetailGalleryCaptions = [
-  { caption: 'Updates & anti-cheat', captionDesc: 'Stay aligned with Apex Legends patch and security news.' },
-  { caption: 'Multiplayer gameplay', captionDesc: 'In-match view on a compact map with full HUD.' },
-  { caption: 'Quick Match perspective', captionDesc: 'First-person combat with kill feed and minimap.' },
+  { caption: 'Updates & anti-cheat', captionDesc: 'Follow seller status after War Dogs or security updates.' },
+  { caption: 'Multiplayer context', captionDesc: 'HUD layout during a live PC session.' },
+  { caption: 'Fast combat', captionDesc: 'Keep overlays minimal so callouts stay readable.' },
 ] as const;
 
 function productDetailGallery(): ProductSlide[] {
@@ -204,119 +180,119 @@ function productDetailGallery(): ProductSlide[] {
 
 function slugFromHref(href: string): string {
   const segment = href.replace(productBase, '').replace(/^\//, '').replace(/\/$/, '');
-  return segment || 'apex';
+  return segment || 'wardogs';
 }
 
 const tierAbout: Record<string, ProductPage['about']> = {
   lite: [
     {
       type: 'p',
-      text: 'Apex Lite is built for players who want map awareness first. In ranked, knowing enemy positions, chest locations and loot timings wins more fights than raw mechanics—Lite gives you that edge without aimbot automation.',
+      text: 'Lite is for players who want situational awareness without stacking every combat module. Confirm exactly which ESP, radar, or information layers ship with Lite on the live listing before buying.',
     },
-    { type: 'h2', text: 'Ranked-safe by design' },
+    { type: 'h2', text: 'Start with minimal overlays' },
     {
       type: 'p',
-      text: 'Lite skips Aimbot and bot modules entirely. Your gameplay looks natural while ESP, radar cheat and loot timers keep you informed. Stream-proof mode hides overlays from OBS capture for content creators.',
+      text: 'Enable the smallest useful set of callouts, then expand once you can read fights. Stream or capture tests may need separate seller guidance.',
     },
   ],
   pro: [
     {
       type: 'p',
-      text: 'Apex Pro is the sweet spot for ranked grinders. Aimbot, Smooth Aim and Sticky Aim help you win squad fights without obvious bot patterns—when you tune Smoothness sliders using our portal presets.',
+      text: 'Pro usually layers combat assists on top of Lite-style awareness. The specific aim or recoil modules must match the listing—not this paragraph.',
     },
-    { type: 'h2', text: 'Aimbot + awareness combined' },
+    { type: 'h2', text: 'Pair assists with discipline' },
     {
       type: 'p',
-      text: 'Pro inherits every Lite module and adds Aimbot, Bone Priority, Hotkey macros and FOV and smoothness drawing. You see the fight before it starts and win it with aimbot that stay human at default settings.',
+      text: 'Aggressive profiles increase visibility to other players and automated systems. Keep backup presets and pause if status looks uncertain.',
     },
   ],
   elite: [
     {
       type: 'p',
-      text: 'Apex Elite is the private build for players who want everything—Loot Assist, Triggerbot, Recoil control, Legend loadout tools, full wall ESP and direct developer support. Limited slots keep the build maintainable and patch cycles fast.',
+      text: 'Elite often bundles the broadest module set plus seller perks such as priority support or expanded utilities. Slot caps or pricing are defined at checkout.',
     },
-    { type: 'h2', text: 'Use Elite responsibly' },
+    { type: 'h2', text: 'Use the full suite carefully' },
     {
       type: 'p',
-      text: 'Elite power demands disciplined profiles. Test in lobbies, start with portal conservative presets, and scale up over days—not minutes. Staff in Discord help Elite users tune before their first ranked queue.',
+      text: 'Document every change, test outside ranked first, and lean on Discord guidance when the seller offers it.',
     },
   ],
 };
 
 const tierBodies: Record<string, ProductPage['body']> = {
   lite: [
-    { type: 'h2', text: 'Included modules' },
+    { type: 'h2', text: 'Typical Lite coverage' },
     {
       type: 'p',
-      text: 'Player ESP with distance and name tags, chest and reboot-van locator, loot spawn timers, radar cheat, and stream-safe overlay hiding. Config presets for Battle Royale and Ranked ship in the portal—load before your first queue.',
+      text: 'Expect map-style overlays such as player boxes, distance readouts, and simplified radar when the listing includes them. Lite often skips the strongest aim automation—see checkout for the current module list.',
     },
     { type: 'h2', text: 'Upgrade path' },
     {
       type: 'p',
-      text: 'Lite license holders can upgrade to Pro or Elite through the portal without losing config backups. Compare tiers on the main product page before checkout via our secure checkout.',
+      text: 'Need stronger assists? Compare Pro or Elite bullets on the live listing and use the same checkout URL when you are ready.',
     },
   ],
   pro: [
-    { type: 'h2', text: 'Aimbot and automation' },
+    { type: 'h2', text: 'Typical Pro additions' },
     {
       type: 'p',
-      text: 'Aimbot, Smooth Aim, Sticky Aim with Prediction, Bone Priority and hotkey macros for heals and mobility. Smoothness sliders tunes cast timing so aimbot stay natural in ranked. Start with portal presets, not max sliders.',
+      text: 'Pro tiers regularly add aim assists, recoil helpers, or expanded ESP channels. Cross-check names and limits against the live listing before assuming parity with other games.',
     },
-    { type: 'h2', text: 'Recommended pairing' },
+    { type: 'h2', text: 'Documentation' },
     {
       type: 'p',
-      text: 'Pro is the most popular tier at apexlegendcheats.net—enough firepower for high-rank lobbies without Elite slot limits. Pair with our aimbot guide in the blog before your first ranked session.',
+      text: 'Read [feature guide](/blog/war-dogs-cheat-features/) for how to parse marketing language, then return to the listing for ground truth.',
     },
   ],
   elite: [
-    { type: 'h2', text: 'Full bot and finish suite' },
+    { type: 'h2', text: 'Why buyers pick Elite' },
     {
       type: 'p',
-      text: 'Loot Assist, Rotation Assist AI, Triggerbot, Recoil control, Legend loadout tools and full wall ESP with smoke alerts. Use lobby testing before ranked—Elite power requires disciplined profiles, not rage settings.',
+      text: 'Elite is for players who need the fullest bundle or seller-supported workflows. If slots are limited, the listing or Discord will say so.',
     },
     { type: 'h2', text: 'Availability' },
     {
       type: 'p',
-      text: 'Elite shows as limited slots on the status banner. Open a Discord ticket if checkout is gated—staff confirm slot availability before purchase.',
+      text: 'Pause checkout if Elite is gated—ask the seller before forcing a purchase.',
     },
   ],
 };
 
 const utilityBodies: Record<string, ProductPage['body']> = {
   'hwid-spoofer': [
-    { type: 'h2', text: 'When you need it' },
+    { type: 'h2', text: 'Sensitive tooling' },
     {
       type: 'p',
-      text: 'Use when fresh EA accounts fail instantly on one PC but work elsewhere—classic HWID enforcement. Do not use for account-only Easy Anti-Cheat cases; see [UGC](/products/apex/ugc/) instead.',
+      text: `Use only when seller docs say it fits your situation. Pair with [UGC-style tools](${productBase}ugc/) only if both appear in your workflow.`,
     },
-    { type: 'h2', text: 'Full workflow' },
+    { type: 'h2', text: 'Safety basics' },
     {
       type: 'p',
-      text: 'Restore point, driver cleanup, spoof application, cold reboot, identifier verification, then conservative cheat profile before ranked. Full checklist ships in the portal and in our HWID blog guide.',
+      text: 'Back up data, follow the portal checklist, and avoid mixing unrelated spoof utilities.',
     },
   ],
-  'ugc': [
-    { type: 'h2', text: 'What UGC covers' },
+  ugc: [
+    { type: 'h2', text: 'What UGC-style tools do' },
     {
       type: 'p',
-      text: 'UGC (Unban & Governance Control) is an appeal workspace for EA account restrictions, Easy Anti-Cheat bans, trade holds and security flags. Build custom workflows, automate dispute steps and track case status from one dashboard—not a guaranteed unban service.',
+      text: 'They help organize appeals or disputes when included in your purchase. They do not guarantee account recovery.',
     },
-    { type: 'h2', text: 'Realistic expectations' },
+    { type: 'h2', text: 'Expectations' },
     {
       type: 'p',
-      text: 'Some Easy Anti-Cheat bans cannot be reversed. UGC organizes evidence and follow-ups for EA review. Pair with [HWID Spoofer](/products/apex/hwid-spoofer/) when hardware is flagged, or a new account when reputation is burned.',
+      text: 'Some sanctions cannot be reversed. Document everything and follow seller timelines.',
     },
   ],
   'unlock-all': [
-    { type: 'h2', text: 'Local preview only' },
+    { type: 'h2', text: 'Cosmetic preview scope' },
     {
       type: 'p',
-      text: 'Cosmetics display on your client for testing and content creation. Other players in your lobby see your actual inventory, not preview skins.',
+      text: 'Local previews may not replicate what opponents see. Read the listing for multiplayer implications.',
     },
-    { type: 'h2', text: 'Included with Elite' },
+    { type: 'h2', text: 'Bundling' },
     {
       type: 'p',
-      text: 'Legend loadout tools ships inside the Elite tier. Buy standalone here if you want cosmetic preview without full combat modules.',
+      text: 'Elite may already include preview utilities—compare bullets before buying twice.',
     },
   ],
 };
@@ -329,28 +305,21 @@ const productContent: Record<
     images: productDetailGallery(),
     goodToKnow: sharedGoodToKnow,
     limitations: sharedLimitations,
-    systemRequirements: apexSystemRequirements,
+    systemRequirements: pcRequirements,
     fullFeatures: [
-      'Player ESP & player boxes',
-      'Chest & loot locator',
-      'POI awareness',
-      'Health & shield tracking',
-      'Mini-radar overlay',
-      'Streamproof overlay mode',
-      'Distance readouts',
-      'Team color filter',
-      'Loot spawn timers',
-      'Radar cheat',
-      'Ranked preset config',
-      'Ranked preset config',
-      'Cloud config backup',
-      'Patch auto-updater',
+      'Player ESP (if listed)',
+      'Distance / name tags (if listed)',
+      'World or loot overlays (if listed)',
+      'Mini-radar (if listed)',
+      'Stream or capture considerations (per seller)',
+      'Config save/load (if listed)',
+      'Patch-aware updates (per seller)',
     ],
     overview: {
-      title: 'Apex Lite: ESP and radar',
+      title: 'Lite: awareness-first War Dogs cheats',
       paragraphs: [
-        'Lite is for player ESP, chest markers, loot timers and radar. No aimbot. Set distance, colors and stream-proof in the portal before you queue.',
-        'Best if you want awareness in Battle Royale and Ranked without combat automation. Overlays are updated after Apex Legends patches.',
+        'Shortlist Lite when you need situational overlays without assuming every combat module. Open checkout to confirm the exact bullets for this tier.',
+        'Best when you prioritize minimap reads, pacing, and callouts. Re-check availability after major War Dogs patches.',
       ],
     },
   },
@@ -358,29 +327,21 @@ const productContent: Record<
     images: productDetailGallery(),
     goodToKnow: sharedGoodToKnow,
     limitations: sharedLimitations,
-    systemRequirements: apexSystemRequirements,
+    systemRequirements: pcRequirements,
     fullFeatures: [
-      'All Lite ESP & wall ESP modules',
-      'Aimbot',
-      'Smooth Aim',
-      'Sticky Aim & Prediction',
-      'Bone Priority',
-      'Hotkey macros (heals/shields)',
-      'Auto Heal',
-      'FOV & smoothness tuning',
-      'Per-weapon aimbot profiles',
-      'Third-party alert integration',
-      'Ranked-safe default presets',
-      'Lobby test profile',
-      'Cloud config backup',
-      'Patch auto-updater',
-      'Discord operator support',
+      'Everything Lite lists on the seller page (when applicable)',
+      'Aim assists (if listed)',
+      'Recoil or weapon layers (if listed)',
+      'Hotkey macros or triggers (if listed)',
+      'Additional ESP channels (if listed)',
+      'Ranked-focused presets (if provided)',
+      'Portal updates (per seller)',
     ],
     overview: {
-      title: 'Apex Pro: aimbot plus ESP',
+      title: 'Pro: War Dogs cheats with combat assists',
       paragraphs: [
-        'Pro includes everything in Lite, plus Aimbot, Smooth Aim, Sticky Aim and hotkey macros. Aim settings live in one tab. Start with a portal preset, not max sliders.',
-        'Most people pick Pro for Battle Royale and Ranked. Bone priority and macros help in fights while defaults stay smooth.',
+        'Pro is the common mid tier—awareness tools plus stronger assists when the listing includes them.',
+        'Compare Pro vs Lite directly on the live listing; do not infer feature parity from other games.',
       ],
     },
   },
@@ -388,120 +349,92 @@ const productContent: Record<
     images: productDetailGallery(),
     goodToKnow: sharedGoodToKnow,
     limitations: sharedLimitations,
-    systemRequirements: apexSystemRequirements,
+    systemRequirements: pcRequirements,
     fullFeatures: [
-      'All Lite + Pro modules',
-      'Loot Assist',
-      'Rotation Assist AI',
-      'Chest respawn timer',
-      'Auto loadout manager',
-      'Triggerbot',
-      'Recoil control',
-      'Full wall ESP suite',
-      'Third-party alert system',
-      'Visibility detector',
-      'Legend loadout tools (Loadout Pack)',
-      'Priority patch queue',
-      'Direct dev Discord support',
-      'Elite conservative presets',
-      'Cloud config backup',
-      'Patch auto-updater',
-      'Private slot access',
+      'Broadest module mix (per listing)',
+      'Possible automation extras (per listing)',
+      'Utilities such as previews when bundled',
+      'Priority updates if advertised',
+      'Dedicated support channel if advertised',
+      'Limited slot messaging (if applicable)',
     ],
     overview: {
-      title: 'Elite: full cheat + extras',
+      title: 'Elite: fullest War Dogs package when offered',
       paragraphs: [
-        'Elite includes Lite and Pro modules, plus loot assist, Triggerbot, Recoil control, Legend loadout tools, full wall ESP and faster patch priority.',
-        'Elite slots are limited. Discord support helps you set safer profiles before ranked matchmaking. Check the status banner on apexlegendcheats.net before you buy Elite access.',
+        'Elite is for buyers who need every module the seller bundles, plus optional perks such as priority responses.',
+        'Confirm slot availability and pricing at checkout—this site does not gate purchase.',
       ],
     },
   },
   'hwid-spoofer': {
     images: slide('gpEspIndoor', 'gpEspWallhack', 'gpGameplay'),
     goodToKnow:
-      'Run the compatibility scan in the portal before spoofing. Create a Windows restore point first. Verify identifiers changed after a cold reboot before launching Apex Legends.',
+      'Follow the seller checklist before altering hardware identifiers. Incorrect use can destabilize Windows—back up first.',
     limitations:
-      'Spoofing does not help account-only Easy Anti-Cheat cases. Never stack two spoof tools. Shared or work PCs may not be suitable. You accept all risk from driver-level changes.',
+      'Not every ban or flag benefits from spoofing. Never run two competing tools. You accept all risk from system-level changes.',
     systemRequirements: [
-      { icon: 'reqWindows', text: 'Windows 10 or 11 64-bit with administrator access.' },
-      { icon: 'reqRestorePoint', text: 'Ability to create a system restore point before running.' },
-      { icon: 'reqShieldGuide', text: 'Follow the portal setup guide before launching Apex Legends after spoofing.' },
-      { icon: 'reqWifi', text: 'Stable connection for portal verification tools.' },
+      { icon: 'reqWindows', text: 'Windows 10/11 64-bit with administrator rights when instructed.' },
+      { icon: 'reqRestorePoint', text: 'Ability to snapshot or back up before changes.' },
+      { icon: 'reqShieldGuide', text: 'Portal documentation from your purchase.' },
+      { icon: 'reqWifi', text: 'Internet for verification steps required by the seller.' },
     ],
     fullFeatures: [
-      'Disk serial profile tools',
-      'MAC address rotation',
-      'Restore point checklist',
-      'Compatibility scan',
-      'Driver conflict detection',
-      'Post-spoof verification',
-      'Identifier diff report',
-      'Cold reboot guide',
-      'Portal step-by-step workflow',
-      'Discord recovery support',
+      'Disk / MAC workflows (if listed)',
+      'Verification scans (if listed)',
+      'Restore instructions (if listed)',
+      'Portal reporting (if listed)',
     ],
     overview: {
-      title: 'HWID Spoofer for Apex Legends PC bans',
+      title: 'HWID utilities for War Dogs players',
       paragraphs: [
-        'Use the HWID Spoofer when Easy Anti-Cheat flags your PC hardware but the EA account is still fine. Includes disk and MAC tools, a restore-point checklist, a compatibility scan and post-spoof checks.',
-        'Use it when new accounts die on one PC but work on another. It does not fix account-only Easy Anti-Cheat bans. After spoofing, use a safer cheat profile before ranked matchmaking.',
+        'Use only when documentation ties the utility to your situation.',
+        'Pair with appeal tooling only if both are part of your approved workflow.',
       ],
     },
   },
   ugc: {
     images: slide('gpEspWallhack', 'gpAimbotEsp', 'gpEspIndoor').map((img, index) =>
-      index === 0 ? { ...img, alt: `Ugc – ${img.alt}` } : img,
+      index === 0 ? { ...img, alt: `UGC – ${img.alt}` } : img,
     ),
-    goodToKnow:
-      'Gather order email, platform account details and restriction screenshots before opening a ticket. UGC structures appeals—it does not bypass platform review.',
-    limitations:
-      'UGC does not guarantee account restoration. Results vary by case type. Permanent Easy Anti-Cheat bans may require a new account path instead of appeal.',
+    goodToKnow: 'Keep every notice, ticket ID, and screenshot the seller expects for appeals.',
+    limitations: 'Outcomes depend on publishers and platforms—this is not a guaranteed unban service.',
     systemRequirements: [
-      { icon: 'reqMailOrder', text: 'Order email used at checkout on apexlegendcheats.net or at checkout on apexlegendcheats.net.' },
-      { icon: 'reqShieldAccount', text: 'Account details and ban or restriction notification if available.' },
-      { icon: 'reqWifiPortal', text: 'Internet access for Discord support and case dashboard.' },
+      { icon: 'reqMailOrder', text: 'Order email used at checkout.' },
+      { icon: 'reqShieldAccount', text: 'Account identifiers referenced in bans or holds.' },
+      { icon: 'reqWifiPortal', text: 'Internet access for uploads and Discord updates.' },
     ],
     fullFeatures: [
-      'Custom appeal workflows',
-      'Restriction dispute automation',
-      'Case documentation templates',
-      'Status tracking dashboard',
-      'Identity verification guide',
-      'Evidence upload structure',
-      'Timeline tracker',
-      'Follow-up response templates',
-      'Multi-platform support',
+      'Appeal templates (if listed)',
+      'Case tracking (if listed)',
+      'Evidence packaging (if listed)',
+      'Follow-up reminders (if listed)',
     ],
     overview: {
-      title: 'UGC account appeal tools',
+      title: 'UGC-style appeal tooling',
       paragraphs: [
-        'UGC (Unban & Governance Control) helps you organize appeals for EA account restrictions and Easy Anti-Cheat bans. UGC does not guarantee an unban.',
-        'Use UGC when you have documentation, order email and platform notices ready. Pair with HWID tools only when hardware flags—not account-only bans—are involved.',
+        'Organizes paperwork for restrictions when the seller lists that capability.',
+        'Use HWID utilities only when the same portal recommends them.',
       ],
     },
   },
   'unlock-all': {
     images: slide('gpGameplay', 'gpEspWallhack', 'gpAimbotEsp'),
     goodToKnow:
-      'Loadout Pack previews cosmetics locally on your client. Other players in your lobby see your real inventory—not preview skins. Included with Elite tier.',
+      'Understand what is local-only versus server-visible. Streaming may need capture tests.',
     limitations:
-      'Local preview only—does not modify in-game inventory or store state. Other players cannot see previewed skins or sets.',
-    systemRequirements: apexSystemRequirements,
+      'May not change actual inventory. Other players generally see your real unlock state.',
+    systemRequirements: pcRequirements,
     fullFeatures: [
-      'Outfit skin swap',
-      'Skin & wrap preview',
-      'Pickaxe & wrap customizer',
-      'Loading screen editor',
-      'Cursor & HUD theme',
-      'Chest & loot replacer',
-      'Favorites list',
-      'Loadout export',
+      'Local outfit preview (if listed)',
+      'Weapon wrap preview (if listed)',
+      'Loadout favorites (if listed)',
+      'Export or share tools (if listed)',
     ],
     overview: {
-      title: 'Legend loadout tools / Loadout Pack',
+      title: 'Loadout preview utilities',
       paragraphs: [
-        'Legend loadout tools / Loadout Pack lets you preview outfits, camos and attachments on your Apex Legends client. Legend loadout tools does not change your in-game inventory or store purchases.',
-        'Only you see the preview skins. Other players see your real inventory. Included with Elite, or buy Legend loadout tools alone without combat modules.',
+        'Helpful when you need client-side experiments without buying every cosmetic.',
+        'Bundled differently than combat tiers—read the utility listing carefully.',
       ],
     },
   },
@@ -510,8 +443,9 @@ const productContent: Record<
 function buildTierPages(): ProductPage[] {
   return t.cheats.items.map((cheat) => {
     const slug = slugFromHref(cheat.href);
-    const content = productContent[slug];
-    const displayName = cheat.name === 'Lite' ? 'Apex Lite' : cheat.name === 'Pro' ? 'Apex Pro' : 'Apex Elite';
+    const content = productContent[slug]!;
+    const displayName =
+      cheat.name === 'Lite' ? 'War Dogs Lite' : cheat.name === 'Pro' ? 'War Dogs Pro' : 'War Dogs Elite';
     return {
       slug,
       kind: 'tier',
@@ -540,34 +474,32 @@ function buildTierPages(): ProductPage[] {
 }
 
 function buildUtilityPages(): ProductPage[] {
-  return t.products.items
-    .filter((p) => p.href !== productBase)
-    .map((product) => {
-      const slug = slugFromHref(product.href);
-      const content = productContent[slug];
-      return {
-        slug,
-        kind: 'utility',
-        badge: product.badge,
-        category: product.category,
-        name: product.title,
-        title: product.title,
-        subtitle: product.subtitle,
-        desc: product.desc,
-        features: product.features,
-        more: product.more,
-        buyUrl: checkoutForSlug(slug),
-        images: content.images,
-        overview: content.overview,
-        acquisition: acquisitionFor(product.title),
-        goodToKnow: content.goodToKnow,
-        limitations: content.limitations,
-        fullFeatures: content.fullFeatures,
-        systemRequirements: content.systemRequirements,
-        body: utilityBodies[slug] ?? [],
-        relatedBlogSlugs: productRelatedBlogSlugs[slug] ?? [],
-      };
-    });
+  return t.products.items.map((product) => {
+    const slug = slugFromHref(product.href);
+    const content = productContent[slug]!;
+    return {
+      slug,
+      kind: 'utility',
+      badge: product.badge,
+      category: product.category,
+      name: product.title,
+      title: product.title,
+      subtitle: product.subtitle,
+      desc: product.desc,
+      features: product.features,
+      more: product.more,
+      buyUrl: checkoutForSlug(slug),
+      images: content.images,
+      overview: content.overview,
+      acquisition: acquisitionFor(product.title),
+      goodToKnow: content.goodToKnow,
+      limitations: content.limitations,
+      fullFeatures: content.fullFeatures,
+      systemRequirements: content.systemRequirements,
+      body: utilityBodies[slug] ?? [],
+      relatedBlogSlugs: productRelatedBlogSlugs[slug] ?? [],
+    };
+  });
 }
 
 export const productPages: ProductPage[] = [...buildTierPages(), ...buildUtilityPages()];
@@ -590,14 +522,13 @@ export function getAllCheatSlugs() {
   return cheatPages.map((p) => p.slug);
 }
 
-const cheatsHubSlides = slide('gpAimbotEsp', 'gpEspWallhack', 'gpGameplay');
-
-export const heroSlides = slide('gpAimbotEsp', 'gpEspWallhack', 'gpGameplay', 'gpEspIndoor', 'gpCourtyard');
+/** Home hero — one slide per approved War Dogs asset (four URLs total). */
+export const heroSlides = slide('gpAimbotEsp', 'gpEspWallhack', 'gpGameplay', 'gpEspIndoor');
 
 export const productHub = {
   path: productBase,
   title: t.products.title,
   subtitle: t.products.subtitle,
-  description: 'Apex Elite cheats with aimbot and ESP, plus HWID spoofer, UGC recovery and Legend loadout tools for PC.',
-  buyUrl: checkoutPath('apex'),
+  description: 'War Dogs cheat tiers and utilities — confirm modules at checkout before you pay.',
+  buyUrl: checkoutPath('warDogs'),
 };

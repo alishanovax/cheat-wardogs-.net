@@ -35,53 +35,53 @@ const toc = post.body
   }));
 
 const defaultProductLinks: { label: string; href: string; icon: IconName }[] = [
-  { label: 'Apex Legends products', href: ROUTES.products, icon: 'sidebarHub' },
+  { label: 'War Dogs products', href: ROUTES.products, icon: 'sidebarHub' },
   { label: 'Elite cheats', href: ROUTES.productsElite, icon: 'sidebarElite' },
-  { label: 'Legend loadout tools', href: productPath('unlock-all'), icon: 'sidebarSkin' },
+  { label: 'Loadout preview utility', href: productPath('unlock-all'), icon: 'sidebarSkin' },
   { label: 'HWID Spoofer', href: productPath('hwid-spoofer'), icon: 'sidebarHwid' },
   { label: 'UGC', href: productPath('ugc'), icon: 'sidebarUgc' },
 ];
 
-const eacGuideProductLinks: { label: string; href: string; icon: IconName }[] = [
-  { label: 'Apex catalog (eac sidebar)', href: ROUTES.products, icon: 'sidebarHub' },
-  { label: 'Elite tier (eac sidebar)', href: ROUTES.productsElite, icon: 'sidebarElite' },
-  { label: 'Legend loadout tools pack', href: productPath('unlock-all'), icon: 'sidebarSkin' },
-  { label: 'HWID spoofer utility (eac)', href: productPath('hwid-spoofer'), icon: 'sidebarHwid' },
+const antiCheatProductLinks: { label: string; href: string; icon: IconName }[] = [
+  { label: 'War Dogs catalog (troubleshooting)', href: ROUTES.products, icon: 'sidebarHub' },
+  { label: 'Elite tier', href: ROUTES.productsElite, icon: 'sidebarElite' },
+  { label: 'Loadout preview pack', href: productPath('unlock-all'), icon: 'sidebarSkin' },
+  { label: 'HWID spoofer utility', href: productPath('hwid-spoofer'), icon: 'sidebarHwid' },
   { label: 'UGC appeal workspace', href: productPath('ugc'), icon: 'sidebarUgc' },
 ];
 
 const streamProofProductLinks: { label: string; href: string; icon: IconName }[] = [
-  { label: 'Apex cheats shop (stream sidebar)', href: ROUTES.products, icon: 'sidebarHub' },
-  { label: 'Elite capture tools (stream)', href: ROUTES.productsElite, icon: 'sidebarElite' },
-  { label: 'Legend loadout tools (stream)', href: productPath('unlock-all'), icon: 'sidebarSkin' },
+  { label: 'War Dogs cheats shop (stream)', href: ROUTES.products, icon: 'sidebarHub' },
+  { label: 'Elite tier (stream testing)', href: ROUTES.productsElite, icon: 'sidebarElite' },
+  { label: 'Loadout preview (stream)', href: productPath('unlock-all'), icon: 'sidebarSkin' },
   { label: 'HWID spoofer (stream setup)', href: productPath('hwid-spoofer'), icon: 'sidebarHwid' },
   { label: 'UGC appeals (stream)', href: productPath('ugc'), icon: 'sidebarUgc' },
 ];
 
 const practiceLobbyProductLinks: { label: string; href: string; icon: IconName }[] = [
-  { label: 'Practice hub — Apex products', href: ROUTES.products, icon: 'sidebarHub' },
-  { label: 'Elite tier (post-drill ranked)', href: ROUTES.productsElite, icon: 'sidebarElite' },
-  { label: 'Loadout tools (practice sidebar)', href: productPath('unlock-all'), icon: 'sidebarSkin' },
-  { label: 'HWID spoofer (practice guide)', href: productPath('hwid-spoofer'), icon: 'sidebarHwid' },
+  { label: 'Practice hub — War Dogs products', href: ROUTES.products, icon: 'sidebarHub' },
+  { label: 'Elite tier', href: ROUTES.productsElite, icon: 'sidebarElite' },
+  { label: 'Loadout preview (practice)', href: productPath('unlock-all'), icon: 'sidebarSkin' },
+  { label: 'HWID spoofer (practice)', href: productPath('hwid-spoofer'), icon: 'sidebarHwid' },
   { label: 'UGC workspace (practice)', href: productPath('ugc'), icon: 'sidebarUgc' },
 ];
 
 const radarGuideProductLinks: { label: string; href: string; icon: IconName }[] = [
-  { label: 'Apex cheats shop (radar sidebar)', href: ROUTES.products, icon: 'sidebarHub' },
-  { label: 'Elite tier (radar + aimbot)', href: ROUTES.productsElite, icon: 'sidebarElite' },
-  { label: 'Loadout tools (radar guide)', href: productPath('unlock-all'), icon: 'sidebarSkin' },
-  { label: 'HWID spoofer (radar setup)', href: productPath('hwid-spoofer'), icon: 'sidebarHwid' },
+  { label: 'War Dogs cheats shop (radar)', href: ROUTES.products, icon: 'sidebarHub' },
+  { label: 'Elite tier (radar + aim)', href: ROUTES.productsElite, icon: 'sidebarElite' },
+  { label: 'Loadout preview (radar)', href: productPath('unlock-all'), icon: 'sidebarSkin' },
+  { label: 'HWID spoofer (radar)', href: productPath('hwid-spoofer'), icon: 'sidebarHwid' },
   { label: 'UGC appeals (radar)', href: productPath('ugc'), icon: 'sidebarUgc' },
 ];
 
 const productLinks =
-  post.slug === 'eac-troubleshooting'
-    ? eacGuideProductLinks
-    : post.slug === 'apex-stream-proof'
+  post.slug === 'war-dogs-anti-cheat-troubleshooting'
+    ? antiCheatProductLinks
+    : post.slug === 'war-dogs-stream-proof'
       ? streamProofProductLinks
-      : post.slug === 'apex-firing-range-practice'
+      : post.slug === 'war-dogs-training-practice'
         ? practiceLobbyProductLinks
-        : post.slug === 'apex-radar'
+        : post.slug === 'war-dogs-radar'
           ? radarGuideProductLinks
           : defaultProductLinks;
 ---
@@ -163,7 +163,7 @@ const productLinks =
     </ul>
     <Button
       as="a"
-      href={checkoutPath('apex')}
+      href={checkoutPath('warDogs')}
       variant="primary"
       size="sm"
       class="blog-sidebar__cta mt-2.5 w-full min-w-0 justify-start"
@@ -171,15 +171,15 @@ const productLinks =
     >
       <span class="truncate">
         {
-          post.slug === 'eac-troubleshooting'
-            ? 'Start Apex checkout'
-            : post.slug === 'apex-stream-proof'
-              ? 'Checkout stream-proof tier'
-              : post.slug === 'apex-firing-range-practice'
-                ? 'Checkout after range drills'
-                : post.slug === 'apex-radar'
-                  ? 'Checkout Lite radar tier'
-                  : 'Buy Apex Legends Cheats'
+          post.slug === 'war-dogs-anti-cheat-troubleshooting'
+            ? 'Continue to War Dogs checkout'
+            : post.slug === 'war-dogs-stream-proof'
+              ? 'Continue to War Dogs checkout'
+              : post.slug === 'war-dogs-training-practice'
+                ? 'Continue to War Dogs checkout'
+                : post.slug === 'war-dogs-radar'
+                  ? 'Continue to War Dogs checkout'
+                  : 'Buy War Dogs cheats'
         }
       </span>
       <Icon name="arrowRight" size={16} class="shrink-0" />

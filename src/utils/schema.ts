@@ -1,7 +1,8 @@
 import type { FaqItem } from '../i18n/types';
 import { SUPPORT_EMAIL } from '../config/site';
 import { SITE_ORIGIN, absoluteAssetUrl, canonicalUrl, getOrganizationSameAs } from '../config/seo';
-import { getProductPlans } from '../data/productPricing';
+
+const SITE_BRAND = 'War Dogs Cheats';
 
 export interface BreadcrumbItem {
   name: string;
@@ -25,11 +26,11 @@ export function websiteSchema() {
   return {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    name: 'Apex Legends Cheats',
+    name: SITE_BRAND,
     url: `${SITE_ORIGIN}/`,
     inLanguage: 'en-US',
     description:
-      'Apex Legends cheats with aimbot, ESP, and radar cheat, Legend loadout tools and ranked-safe tiers for PC.',
+      'War Dogs cheats and hacks for PC — guides and tier pages on cheatwardogs.net; purchases complete through the linked checkout.',
   };
 }
 
@@ -39,7 +40,7 @@ export function organizationSchema() {
   return {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    name: 'Apex Legends Cheats',
+    name: SITE_BRAND,
     url: `${SITE_ORIGIN}/`,
     logo: `${SITE_ORIGIN}/logo.svg`,
     email: SUPPORT_EMAIL,
@@ -67,23 +68,24 @@ export function collectionPageSchema(input: { name: string; description: string;
     inLanguage: 'en-US',
     isPartOf: {
       '@type': 'WebSite',
-      name: 'Apex Legends Cheats',
+      name: SITE_BRAND,
       url: `${SITE_ORIGIN}/`,
     },
   };
 }
 
-export function webPageSchema(input: { name: string; description: string; url: string }) {
+export function webPageSchema(input: { name: string; description: string; url: string; image?: string }) {
   return {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
     name: input.name,
     description: input.description,
     url: canonicalUrl(input.url),
+    ...(input.image ? { image: input.image } : {}),
     inLanguage: 'en-US',
     isPartOf: {
       '@type': 'WebSite',
-      name: 'Apex Legends Cheats',
+      name: SITE_BRAND,
       url: `${SITE_ORIGIN}/`,
     },
   };
@@ -132,59 +134,31 @@ export function discussionForumPostingSchema(input: {
     url: canonicalUrl(input.url),
     author: { '@type': 'Person', name: input.author },
     commentCount: input.comments,
-    isPartOf: { '@type': 'CollectionPage', name: 'Apex Legends Cheats Forum', url: canonicalUrl('/forum/') },
+    isPartOf: { '@type': 'CollectionPage', name: `${SITE_BRAND} Forum`, url: canonicalUrl('/forum/') },
   };
 }
 
-function offerUrl(path: string): string {
-  if (path.startsWith('http://') || path.startsWith('https://')) return path;
-  return canonicalUrl(path);
-}
-
+/**
+ * Product tier pages describe checkout elsewhere — use WebPage + BreadcrumbList, not Product+Offer without price.
+ * @deprecated Use webPageSchema on product pages. Kept name for older imports.
+ */
 export function productSchema(input: {
   name: string;
   description: string;
   url: string;
-  offerUrl: string;
+  offerUrl?: string;
   image?: string;
   sku?: string;
 }) {
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'Product',
+  return webPageSchema({
     name: input.name,
     description: input.description,
-    sku: input.sku ?? input.url.replace(/\//g, '-'),
-    brand: {
-      '@type': 'Brand',
-      name: 'Apex Legends Cheats',
-    },
+    url: input.url,
     ...(input.image ? { image: absoluteAssetUrl(input.image) } : {}),
-    offers: {
-      '@type': 'AggregateOffer',
-      url: offerUrl(input.offerUrl),
-      priceCurrency: 'USD',
-      lowPrice: String(Math.min(...getProductPlans().map((plan) => plan.priceUsd))),
-      highPrice: String(Math.max(...getProductPlans().map((plan) => plan.priceUsd))),
-      offerCount: getProductPlans().length,
-      availability: 'https://schema.org/InStock',
-      seller: {
-        '@type': 'Organization',
-        name: 'Apex Legends Cheats',
-      },
-      offers: getProductPlans().map((plan) => ({
-        '@type': 'Offer',
-        name: plan.label,
-        price: plan.priceUsd.toFixed(2),
-        priceCurrency: 'USD',
-        url: offerUrl(input.offerUrl),
-        availability: 'https://schema.org/InStock',
-      })),
-    },
-  };
+  });
 }
 
-/** @deprecated Prefer productSchema for product/cheat detail pages. */
+/** @deprecated Prefer webPageSchema */
 export function softwareApplicationSchema(input: {
   name: string;
   description: string;
@@ -192,12 +166,11 @@ export function softwareApplicationSchema(input: {
   image?: string;
   offerUrl?: string;
 }) {
-  return productSchema({
+  return webPageSchema({
     name: input.name,
     description: input.description,
     url: input.url,
-    offerUrl: input.offerUrl ?? input.url,
-    image: input.image,
+    ...(input.image ? { image: absoluteAssetUrl(input.image) } : {}),
   });
 }
 
@@ -221,11 +194,11 @@ export function articleSchema(input: {
     inLanguage: 'en-US',
     author: {
       '@type': 'Organization',
-      name: 'Apex Legends Cheats',
+      name: SITE_BRAND,
     },
     publisher: {
       '@type': 'Organization',
-      name: 'Apex Legends Cheats',
+      name: SITE_BRAND,
       logo: {
         '@type': 'ImageObject',
         url: `${SITE_ORIGIN}/logo.svg`,

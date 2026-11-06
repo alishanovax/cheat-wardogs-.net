@@ -38,9 +38,9 @@ if (!post) {
 
 const postPath = `/blog/${post.slug}/`;
 const blogCrumbLabels: Record<string, string> = {
-  'apex-firing-range-practice': 'Apex Firing Range guides (blog hub)',
-  'apex-stream-proof': 'Stream-proof guides (blog hub)',
-  'apex-radar': 'Radar cheat guides (blog hub)',
+  'war-dogs-training-practice': 'Training guides (blog hub)',
+  'war-dogs-stream-proof': 'Stream capture guides (blog hub)',
+  'war-dogs-radar': 'Radar guides (blog hub)',
 };
 const blogCrumbLabel = blogCrumbLabels[post.slug] ?? 'Blog';
 const breadcrumbs = [
@@ -57,10 +57,10 @@ function linkify(text: string): string {
       const normalized = normalizeInternalPath(href);
       return `<a href="${normalized}">${label}</a>`;
     })
-    .replace(/(https:\/\/apexlegendcheats\.net[^\s.,;)]*)/g, (_match, url: string) => {
-      const path = url.replace(/^https:\/\/apexlegendcheats\.net/, '');
+    .replace(/(https:\/\/cheatwardogs\.net[^\s.,;)]*)/g, (_match, url: string) => {
+      const path = url.replace(/^https:\/\/cheatwardogs\.net/, '');
       const normalized = normalizeInternalPath(path);
-      const href = normalized.startsWith('http') ? normalized : `https://apexlegendcheats.net${normalized}`;
+      const href = normalized.startsWith('http') ? normalized : `https://cheatwardogs.net${normalized}`;
       return `<a href="${href}">${url}</a>`;
     });
 }
@@ -123,11 +123,11 @@ const articleH1 = blogPostPageH1(post.slug, post.title);
             <ResponsiveImage
               src={post.image}
               alt={
-                post.slug === 'eac-troubleshooting'
-                  ? `${post.title} — Easy Anti-Cheat verification troubleshooting on PC`
-                  : post.slug === 'apex-stream-proof'
-                    ? `${post.title} — hide wall ESP and script overlays on stream`
-                    : `${post.title} — Apex Legends cheat gameplay screenshot`
+                post.slug === 'war-dogs-anti-cheat-troubleshooting'
+                  ? `${post.title} — anti-cheat troubleshooting context on PC`
+                  : post.slug === 'war-dogs-stream-proof'
+                    ? `${post.title} — stream capture testing for War Dogs overlays`
+                    : `${post.title} — War Dogs PC product imagery (illustrative)`
               }
               width={960}
               height={540}
@@ -188,10 +188,10 @@ const articleH1 = blogPostPageH1(post.slug, post.title);
                     html={linkify(block.text)}
                     href={resolveCheckoutHref(block.href)}
                     buyLabel={
-                      post.slug === 'apex-firing-range-practice'
-                        ? 'Checkout after Firing Range drills (CTA)'
-                        : post.slug === 'apex-stream-proof'
-                          ? 'Buy stream-proof tier (inline CTA)'
+                      post.slug === 'war-dogs-training-practice'
+                        ? 'War Dogs checkout (after drills)'
+                        : post.slug === 'war-dogs-stream-proof'
+                          ? 'War Dogs checkout (stream checklist)'
                           : undefined
                     }
                   />
@@ -202,43 +202,43 @@ const articleH1 = blogPostPageH1(post.slug, post.title);
           </Prose>
 
           <nav class="blog-article__actions" aria-label="Continue reading">
-            <Button as="a" href={checkoutPath('apex')} variant="primary" aria-label={t.ui.checkoutAria}>
+            <Button as="a" href={checkoutPath('warDogs')} variant="primary" aria-label={t.ui.checkoutAria}>
               {
-                post.slug === 'eac-troubleshooting'
-                  ? 'Checkout after Easy Anti-Cheat fix'
-                  : post.slug === 'apex-stream-proof'
-                    ? 'Buy stream-proof Apex tier'
-                    : post.slug === 'apex-firing-range-practice'
-                      ? 'Checkout after Firing Range drills'
-                      : post.slug === 'apex-radar'
-                        ? 'Buy Lite radar cheat tier'
-                        : 'Buy Apex Legends Cheats'
+                post.slug === 'war-dogs-anti-cheat-troubleshooting'
+                  ? 'Continue to War Dogs checkout'
+                  : post.slug === 'war-dogs-stream-proof'
+                    ? 'Continue to War Dogs checkout'
+                    : post.slug === 'war-dogs-training-practice'
+                      ? 'Continue to War Dogs checkout'
+                      : post.slug === 'war-dogs-radar'
+                        ? 'Continue to War Dogs checkout'
+                        : 'Buy War Dogs cheats'
               }
               <Icon name="arrowRight" size={17} />
             </Button>
             <Button as="a" href={ROUTES.products} variant="outline">
               {
-                post.slug === 'eac-troubleshooting'
-                  ? 'Open Apex product catalog'
-                  : post.slug === 'apex-stream-proof'
-                    ? 'Open stream-safe product hub'
-                    : post.slug === 'apex-firing-range-practice'
+                post.slug === 'war-dogs-anti-cheat-troubleshooting'
+                  ? 'Open War Dogs product hub'
+                  : post.slug === 'war-dogs-stream-proof'
+                    ? 'Open War Dogs product hub'
+                    : post.slug === 'war-dogs-training-practice'
                       ? 'Compare Lite and Pro tiers'
-                      : post.slug === 'apex-radar'
-                        ? 'Open Apex product catalog (radar)'
+                      : post.slug === 'war-dogs-radar'
+                        ? 'Open War Dogs product hub'
                         : 'View products'
               }
             </Button>
             <Button as="a" href={ROUTES.blog} variant="outline">
               {
-                post.slug === 'eac-troubleshooting'
-                  ? 'Browse patch-day guides'
-                  : post.slug === 'apex-stream-proof'
-                    ? 'More OBS setup guides'
-                    : post.slug === 'apex-firing-range-practice'
-                      ? 'More Firing Range guides'
-                      : post.slug === 'apex-radar'
-                        ? 'More radar and ESP guides'
+                post.slug === 'war-dogs-anti-cheat-troubleshooting'
+                  ? 'More troubleshooting guides'
+                  : post.slug === 'war-dogs-stream-proof'
+                    ? 'More stream setup guides'
+                    : post.slug === 'war-dogs-training-practice'
+                      ? 'More training guides'
+                      : post.slug === 'war-dogs-radar'
+                        ? 'More radar guides'
                         : 'More articles'
               }
               <Icon name="arrowRight" size={17} />

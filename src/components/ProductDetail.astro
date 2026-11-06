@@ -38,7 +38,11 @@ const showDescToggle = descriptionBlocks.length > 2;
   <div class="mx-auto max-w-6xl px-5">
     <ProductDetailHeader product={product} />
 
-    {breadcrumbs && <Breadcrumbs items={breadcrumbs} class="product-detail__breadcrumbs mt-4" />}
+    {breadcrumbs && (
+      <div class="product-detail__breadcrumbs mt-4">
+        <Breadcrumbs items={breadcrumbs} class="mb-0" />
+      </div>
+    )}
 
     <div class="product-detail-hero__grid mt-10 grid items-start gap-8">
       <ProductScreenshotGallery images={product.images} id={`gallery-${product.slug}`} />

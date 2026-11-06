@@ -2,11 +2,12 @@
 import { t } from '../i18n';
 import { Separator } from '@/components/starwind/separator';
 import SiteBrandMark from './SiteBrandMark.astro';
+import { ROUTES } from '../utils/path';
 
 const resourceLinks = [
   { href: '/blog/', label: 'Blog archive', ariaLabel: 'Blog' },
-  { href: '/products/apex/elite/', label: 'Elite cheats', ariaLabel: 'Elite cheats' },
-  { href: '/products/apex/', label: 'Products & utilities', ariaLabel: 'Products' },
+  { href: ROUTES.productsElite, label: 'Elite cheats', ariaLabel: 'Elite cheats' },
+  { href: ROUTES.products, label: 'Products & utilities', ariaLabel: 'Products' },
   { href: '/support/', label: t.footer.support },
 ];
 
@@ -22,12 +23,11 @@ const onHomePage = normalizedPath === '/';
 const onAboutPage = normalizedPath === '/about';
 const onBlogPage = normalizedPath === '/blog';
 const onFaqPage = normalizedPath === '/faq';
-const onPracticeLobbyPost = normalizedPath === '/blog/apex-firing-range-practice';
-const onStreamProofPost = normalizedPath === '/blog/apex-stream-proof';
-const onRadarPost = normalizedPath === '/blog/apex-radar';
+const onPracticeLobbyPost = normalizedPath === '/blog/war-dogs-training-practice';
+const onStreamProofPost = normalizedPath === '/blog/war-dogs-stream-proof';
+const onRadarPost = normalizedPath === '/blog/war-dogs-radar';
 const onForumPage = normalizedPath === '/forum';
-const onProductsApexHub = normalizedPath === '/products/apex';
-
+const onProductsWarDogsHub = normalizedPath === '/pd/wd';
 ---
 
 <footer class="border-t border-border bg-muted/30 py-16">
@@ -62,41 +62,41 @@ const onProductsApexHub = normalizedPath === '/products/apex';
           {resourceLinks.map((link) => (
             <li>
               <a href={link.href} class="text-sm text-muted-foreground hover:text-primary" aria-label={link.ariaLabel}>
-                {onProductsApexHub && link.href === '/blog/'
-                  ? 'Apex catalog hub — patch setup guides'
-                  : onProductsApexHub && link.href === '/support/'
-                    ? 'Apex catalog — loader and checkout support'
-                    : onProductsApexHub && link.href === '/products/apex/elite/'
-                      ? 'Elite tier listing from catalog hub'
-                      : onProductsApexHub && link.href === '/products/apex/'
-                        ? 'Apex product catalog (you are here)'
+                {onProductsWarDogsHub && link.href === '/blog/'
+                  ? 'Product hub — War Dogs setup guides'
+                  : onProductsWarDogsHub && link.href === '/support/'
+                    ? 'Product hub — loader and checkout help'
+                    : onProductsWarDogsHub && link.href === ROUTES.productsElite
+                      ? 'Elite tier from catalog hub'
+                      : onProductsWarDogsHub && link.href === ROUTES.products
+                        ? 'War Dogs catalog (you are here)'
                         : onForumPage && link.href === '/blog/'
-                  ? 'Forum sidebar — Apex setup guides'
-                  : onPrivacyPage && link.href === '/support/'
-                  ? 'Privacy questions — shop support'
-                  : onHomePage && link.href === '/support/'
-                    ? 'Homepage loader and checkout support'
-                    : onAboutPage && link.href === '/support/'
-                      ? 'About page — loader and checkout support'
-                      : onBlogPage && link.href === '/support/'
-                        ? 'Blog index — setup and loader support'
-                        : onFaqPage && link.href === '/support/'
-                          ? 'FAQ page — loader and checkout support'
-                          : onPracticeLobbyPost && link.href === '/support/'
-                          ? 'Practice lobby guide — loader support'
-                          : onStreamProofPost && link.href === '/support/'
-                            ? 'Stream-proof guide — capture support'
-                            : onRadarPost && link.href === '/support/'
-                              ? 'Radar cheat guide — loader support'
-                              : onRadarPost && link.href === '/blog/'
-                                ? 'Radar article hub — more setup guides'
-                                : onRadarPost && link.href === '/products/apex/elite/'
-                                  ? 'Elite tier from radar guide sidebar'
-                                  : onRadarPost && link.href === '/products/apex/'
-                                    ? 'Apex cheats shop linked from radar guide'
-                                    : onForumPage && link.href === '/support/'
-                                      ? 'Forum page — loader and checkout support'
-                                      : link.label}
+                          ? 'Forum — blog guides'
+                          : onPrivacyPage && link.href === '/support/'
+                            ? 'Privacy — contact support'
+                            : onHomePage && link.href === '/support/'
+                              ? 'Homepage support'
+                              : onAboutPage && link.href === '/support/'
+                                ? 'About — support'
+                                : onBlogPage && link.href === '/support/'
+                                  ? 'Blog — support'
+                                  : onFaqPage && link.href === '/support/'
+                                    ? 'FAQ — support'
+                                    : onPracticeLobbyPost && link.href === '/support/'
+                                      ? 'Training guide — support'
+                                      : onStreamProofPost && link.href === '/support/'
+                                        ? 'Stream guide — support'
+                                        : onRadarPost && link.href === '/support/'
+                                          ? 'Radar guide — support'
+                                          : onRadarPost && link.href === '/blog/'
+                                            ? 'Radar — more guides'
+                                            : onRadarPost && link.href === ROUTES.productsElite
+                                              ? 'Elite tier (related)'
+                                              : onRadarPost && link.href === ROUTES.products
+                                                ? 'Product hub (related)'
+                                                : onForumPage && link.href === '/support/'
+                                                  ? 'Forum — support'
+                                                  : link.label}
               </a>
             </li>
           ))}
@@ -109,7 +109,7 @@ const onProductsApexHub = normalizedPath === '/products/apex';
           {legalLinks.map((link) => (
             <li>
               <a href={link.href} class="text-sm text-muted-foreground hover:text-primary">
-                {onForumPage && link.href === '/about/' ? 'Footer — about apexlegendcheats.net' : link.label}
+                {onForumPage && link.href === '/about/' ? 'About cheatwardogs.net' : link.label}
               </a>
             </li>
           ))}

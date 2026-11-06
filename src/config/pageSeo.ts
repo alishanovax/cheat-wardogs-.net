@@ -14,97 +14,95 @@ export interface PageSeoEntry {
 
 export const PAGE_SEO: Record<string, PageSeoEntry> = {
   '/': {
-    title: 'Apex Legends – Check status before you queue after Easy',
+    title: 'War Dogs Cheats PC | Features, Guides & Checkout',
     description:
-      'Apex Legends cheats for Apex Legends on PC — aimbot, player ESP, item ESP, config profiles, and installation guides at apexlegendcheats.net.',
-    h1: 'Apex Legends Cheats',
-    h1Accent:
-      'Check status before you queue after Easy Anti-Cheat — Apex Legends PC, Aimbot, ESP, Item ESP & Configs',
+      'War Dogs cheats and War Dogs hacks for PC — tier pages, installation guides, and FAQ on cheatwardogs.net. See checkout for current modules and price.',
+    h1: 'War Dogs Cheats',
   },
-  '/products/apex/': {
-    title: 'Apex – UGC recovery and Legend loadout tools checkout at',
+  '/pd/wd/': {
+    title: 'Buy War Dogs Cheats — Lite, Pro & Elite PC tiers',
     description:
-      'Apex shop: Apex Legends PC cheats — Elite aimbot, wall ESP, HWID spoofer, UGC recovery checkout at apexlegendcheats.net.',
-    h1: 'Buy PC hacks — Apex Legends Elite, HWID spoofer, Legend loadout tools cheats shop tiers',
+      'War Dogs cheats PC shop: Lite, Pro, Elite tiers and utilities. Compare tiers here; see checkout for the live module list and price.',
+    h1: 'War Dogs cheats for PC — product hub',
   },
-  '/products/apex/lite/': {
-    title: 'Apex Lite Cheats | Player ESP, Radar & Loot Timers',
+  '/pd/wd/lite/': {
+    title: 'War Dogs Lite Cheats | Awareness ESP & Radar',
     description:
-      'Apex Lite cheats for PC — player ESP, chest markers, loot timers and radar without aimbot. Stream-proof overlay and ranked presets on apexlegendcheats.net.',
+      'War Dogs Lite cheats focus on awareness overlays — confirm ESP, radar, and timers on the live listing before buying.',
   },
-  '/products/apex/pro/': {
-    title: 'Apex Pro Cheats | Aimbot, Smooth Aim & Wall ESP',
+  '/pd/wd/pro/': {
+    title: 'War Dogs Pro Cheats | Combat assists + ESP',
     description:
-      'Apex Pro cheats include Lite ESP plus Aimbot, Smooth Aim, Sticky Aim and bone priority — ranked-safe defaults and portal presets for Apex Legends on PC.',
+      'War Dogs Pro cheats add combat assists on top of Lite-style overlays — confirm aim, recoil, and ESP details on the live listing.',
   },
-  '/products/apex/elite/': {
-    title: 'Elite Apex Legends Cheats | Aimbot, ESP & Loot Assist',
+  '/pd/wd/elite/': {
+    title: 'War Dogs Elite Cheats | Full bundle when listed',
     description:
-      'Elite tier ships item ESP, triggerbot, full wall ESP, operator loadout tools and priority patch updates for Apex Legends on PC.',
+      'War Dogs Elite cheats may bundle the widest module set — check availability, slots, and perks on the live listing before checkout.',
   },
-  '/products/apex/hwid-spoofer/': {
-    title: 'HWID Spoofer for Apex Legends | Hardware Ban Bypass',
+  '/pd/wd/hwid-spoofer/': {
+    title: 'War Dogs HWID utility | Hardware workflows (seller-guided)',
     description:
-      'Buy a Apex Legends HWID spoofer for PC hardware bans — disk/MAC tools, compatibility scan and post-spoof checks before you launch cheats again.',
+      'War Dogs HWID-related utility page — follow seller documentation only. Not every ban benefits from hardware changes.',
   },
-  '/products/apex/ugc/': {
-    title: 'UGC Tools | Apex Legends Easy Anti-Cheat & EA Ban Appeals',
+  '/pd/wd/ugc/': {
+    title: 'War Dogs UGC tools | Appeals & case tracking (if listed)',
     description:
-      'UGC (Unban & Governance Control) organizes EA and Easy Anti-Cheat ban appeals, dispute workflows and case tracking for Apex Legends players.',
+      'UGC-style tools for War Dogs players when the seller lists them — outcomes are not guaranteed.',
   },
-  '/products/apex/unlock-all/': {
-    title: 'Legend loadout tools – wrap and weapon previews with your Modern',
+  '/pd/wd/unlock-all/': {
+    title: 'War Dogs loadout preview | Cosmetic utilities (if listed)',
     description:
-      'Legend loadout tools / Loadout Pack — local outfit, wrap and weapon previews with your Apex Legends client; no in-game inventory purchase required.',
+      'Loadout or cosmetic preview utilities for War Dogs — read the seller listing for multiplayer visibility rules.',
   },
-  '/products/apex/utilities/': {
-    title: 'Utilities – and local Legend loadout tools / Pack',
+  '/pd/wd/utilities/': {
+    title: 'War Dogs cheat utilities — compare HWID, UGC & previews',
     description:
-      'Compare Apex Legends cheat utilities: HWID spoofer after hardware bans, UGC for EA/Easy Anti-Cheat appeals, and local operator loadout tools.',
+      'Compare optional War Dogs utilities before checkout — each seller listing may differ.',
   },
   '/blog/': {
-    title: 'Wall Esp – Read Apex Legends cheat guides on aimbot setup',
+    title: 'War Dogs Cheats Blog | Setup, hacks & installation guides',
     description:
-      'Read Apex Legends cheat guides on aimbot setup, wall ESP, Lite vs Pro, Firing Range practice and Easy Anti-Cheat patch-day checks.',
-    h1: 'Latest Apex Legends cheat guide blogs — aimbot, wall ESP & Easy Anti-Cheat',
+      'War Dogs cheats guides: how to install War Dogs cheats, patch discipline, ESP setup, and how to read product listings.',
+    h1: 'War Dogs cheats guides — installation, hacks & FAQs',
   },
   '/forum/': {
-    title: 'Forum – Most discussed 20 discussions All topics General',
+    title: 'War Dogs Cheats Forum | Setup and tier questions',
     description:
-      'Forum for loader setup, aimbot configs, Easy Anti-Cheat status and product questions. Answers from apexlegendcheats.net guides and community discussions.',
-    h1: 'Forum — most discussed topics, general discussions and loader setup help',
+      'Forum threads sourced from War Dogs guides — loader questions, tier picks, and update notes.',
+    h1: 'Forum — War Dogs cheats discussions and guide Q&A',
   },
   '/faq/': {
-    title: 'Faq – Apex tiers, bans, setup and Easy Anti-Cheat loader',
+    title: 'War Dogs Cheats FAQ | Access, risk & checkout',
     description:
-      'FAQ on Lite, Pro and Elite tiers, aimbot, wall ESP, radar, HWID spoofer, Legend loadout tools, bans and loader setup at apexlegendcheats.net.',
-    h1: 'FAQ — Apex Legends Cheats tiers, bans, Easy Anti-Cheat setup, loader help and checkout',
+      'FAQ for War Dogs cheats and War Dogs hacks: tiers, bans, checkout link, and support paths on cheatwardogs.net.',
+    h1: 'FAQ — War Dogs cheats access, risk, checkout and compatibility',
   },
   '/terms/': {
-    title: 'Terms – org — license use, delivery, refunds and account',
+    title: 'Terms | War Dogs Cheats on cheatwardogs.net',
     description:
-      'Terms for buying Apex Legends cheats on apexlegendcheats.net — license use, delivery, refunds and account risk when you checkout Apex Legends cheat products.',
+      'Terms for using cheatwardogs.net and linking to external checkout for War Dogs cheat purchases.',
   },
   '/privacy/': {
-    title: 'Analytics Cookies – and contact data for checkout',
+    title: 'Privacy Policy | cheatwardogs.net analytics & referrals',
     description:
-      'Privacy: How the apexlegendcheats.net shop uses analytics, cookies and contact data for checkout referrals, support tickets, and shop data use.',
-    h1: 'Privacy Policy — apexlegendcheats.net analytics, cookies, checkout and contact data',
+      'Privacy for cheatwardogs.net — analytics cookies, support email, and checkout referral flow.',
+    h1: 'Privacy Policy — cheatwardogs.net analytics, cookies and checkout referrals',
   },
   '/about/': {
-    title: 'Aimbot Esp – We publish tier comparisons, setup guides and',
+    title: 'About War Dogs Cheats | cheatwardogs.net',
     description:
-      'About aimbot ESP and PC Apex Legends tools — tier comparisons, loader setup and support at apexlegendcheats.net for EA Connect players.',
+      'What cheatwardogs.net publishes about War Dogs cheats, hacks, and navigation versus the external seller checkout.',
   },
   '/support/': {
-    title: 'Support – loader, HWID and checkout help on apexlegendcheats.net',
+    title: 'Support | War Dogs Cheats navigation & FAQ',
     description:
-      'Apex Legends cheats support for loader setup, aimbot/ESP configs, HWID spoofing and checkout help — 24/7 Discord and FAQ on apexlegendcheats.net.',
+      'Support for cheatwardogs.net — site help before you contact the War Dogs seller with your order details.',
   },
-  '/apex-legends-cheats/': {
-    title: 'Apex Legends Cheats — patch utilities for PC trainer & loader',
+  '/war-dogs-cheats/': {
+    title: 'War Dogs Cheats & War Dogs Hacks — PC overview',
     description:
-      'Apex Legends Cheats patch utilities for aimbot, wall ESP, item ESP and loader updates on PC. Compare tiers and checkout at apexlegendcheats.net.',
+      'Keyword overview for War Dogs cheats PC buyers — module terms, risk notes, and link to War Dogs checkout.',
   },
 };
 
@@ -121,35 +119,50 @@ export function getPageSeoEntry(pathname: string): PageSeoEntry | undefined {
 
 /** Blog post `<title>` / meta description overrides (exact audit phrases). */
 export const BLOG_POST_SEO: Record<string, Partial<PageSeoEntry>> = {
-  'apex-radar': {
-    title: 'Guide – FOV awareness and safe distance caps for Team',
+  'war-dogs-game-cheats-explained': {
+    title: 'War Dogs Cheats Explained | PC ESP, Radar & Setup',
     description:
-      'Radar Cheat: Apex Legends cheats guide: Mini-radar, FOV awareness and safe distance caps for Battle Royale and Ranked on apexlegendcheats.net.',
+      'War Dogs cheats explained for PC — ESP, radar, aim assists, patch-day risk, and links to product hub and checkout on cheatwardogs.net.',
   },
-  'apex-stream-proof': {
-    title: 'Stream Proof – Hide wall ESP and script overlays from OBS',
+  'war-dogs-training-tips': {
+    title: 'War Dogs Training Tips — Overlays Before Ranked',
     description:
-      'Stream Proof: Apex Legends cheats guide: Hide wall ESP and script overlays from OBS, Game Bar and capture cards—test workflow for content creators.',
+      'Train in low-risk War Dogs sessions first: ESP readability, radar distance, aim presets, keybinds, and patch-day checks before ranked — cheatwardogs.net.',
   },
-  'apex-aimbot-ranked': {
-    title: 'Ranked – net ships Bone Priority, Prediction, Smoothness',
-  },
-  'eac-troubleshooting': {
-    title: 'Eac – What the error means “Easy Anti-Cheat was unable to',
+  'buy-war-dogs-cheats': {
+    title: 'How to Buy War Dogs Cheats (2026) — Hub & Checkout',
     description:
-      'Apex Legends cheats guide: Fix verification errors, file integrity checks and when to use Account Recovery after eac issues on apexlegendcheats.net.',
+      'Step-by-step: compare War Dogs tiers on the product hub, verify modules on the live listing, checkout securely, then delivery, setup, and patch-day habits.',
+  },
+  'war-dogs-radar': {
+    title: 'War Dogs radar cheats — distance and FOV tips',
+    description:
+      'War Dogs cheats guide: radar overlays depend on your build—verify distance caps and filters on the live listing.',
+  },
+  'war-dogs-stream-proof': {
+    title: 'Stream capture tests for War Dogs overlays',
+    description:
+      'Test OBS or other capture with War Dogs overlays yourself — never assume invisibility.',
+  },
+  'war-dogs-aimbot-ranked': {
+    title: 'Ranked aim settings — War Dogs cheats',
+  },
+  'war-dogs-anti-cheat-troubleshooting': {
+    title: 'Anti-cheat errors — War Dogs PC troubleshooting',
+    description:
+      'Start with verification steps, then involve seller support for War Dogs loader-specific errors.',
   },
 };
 
 /** Optional on-page H1 overrides (blog posts). */
 export const BLOG_POST_PAGE_H1: Record<string, string> = {
-  'eac-troubleshooting':
-    'What the Easy Anti-Cheat error means — EAC unable to verify Apex Legends (Apex Legends cheats)',
-  'apex-stream-proof':
-    'Stream-Proof Overlay Setup — hide wall ESP and script overlays from OBS (Apex Legends cheats)',
-  'apex-firing-range-practice': 'Firing Range Practice: Aim Drills Before Ranked (Apex Legends cheats)',
-  'apex-radar':
-    'Apex Legends Radar cheat Guide — FOV awareness, safe distance caps for Team',
+  'war-dogs-anti-cheat-troubleshooting':
+    'Anti-cheat verification errors — troubleshooting for War Dogs PC players',
+  'war-dogs-stream-proof': 'Stream capture checklist — War Dogs overlay tests',
+  'war-dogs-training-practice': 'Training mode practice before War Dogs cheat sessions',
+  'war-dogs-radar': 'War Dogs radar-style overlays — read the listing before enabling',
+  'war-dogs-game-cheats-explained': 'War Dogs cheats explained — settings, risks, and checkout links',
+  'war-dogs-training-tips': 'War Dogs training tips — tune overlays and aim before ranked play',
 };
 
 export function getBlogPostSeo(slug: string, fallback: PageSeoEntry): PageSeoEntry {
@@ -166,7 +179,7 @@ export function blogPostPageH1(slug: string, postTitle: string): string {
 }
 
 /** Layout `<title>` for blog posts; ranked override is used verbatim when under 60 chars. */
-export function blogPostLayoutTitle(slug: string, postTitle: string, brand = 'Apex Legends Cheats'): string {
+export function blogPostLayoutTitle(slug: string, postTitle: string, brand = 'War Dogs Cheats'): string {
   const override = BLOG_POST_SEO[slug]?.title;
   if (override && override.length <= 60) return override;
   if (override) return `${override.slice(0, 57).trim()}…`;

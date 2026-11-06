@@ -39,6 +39,8 @@ function initNavHighlight() {
 
 function initInPageScroll() {
   document.querySelectorAll<HTMLElement>('[data-scroll-target]').forEach((el) => {
+    if (el.dataset.siteScrollBound === 'true') return;
+    el.dataset.siteScrollBound = 'true';
     el.addEventListener('click', (event) => {
       const id = el.getAttribute('data-scroll-target');
       if (!id) return;
@@ -54,6 +56,8 @@ function initInPageScroll() {
 
 function initSkipLink() {
   document.querySelectorAll<HTMLElement>('[data-skip-to-main]').forEach((button) => {
+    if (button.dataset.siteSkipBound === 'true') return;
+    button.dataset.siteSkipBound = 'true';
     button.addEventListener('click', () => {
       const main = document.getElementById('main-content');
       if (!main) return;
@@ -67,6 +71,9 @@ function initSkipLink() {
 
 function initFaqFilters() {
   document.querySelectorAll('[data-faq-filters]').forEach((container) => {
+    if ((container as HTMLElement).dataset.siteFaqBound === 'true') return;
+    (container as HTMLElement).dataset.siteFaqBound = 'true';
+
     const section = container.closest('[data-faq-section]');
     const list = section?.querySelector('[data-faq-list]');
     if (!list) return;
@@ -88,6 +95,8 @@ function initFaqFilters() {
   });
 }
 
+let themeClassObserver: MutationObserver | null = null;
+
 function initThemeMetaColor() {
   const metaTheme = document.querySelector<HTMLMetaElement>('meta[name="theme-color"]');
   if (!metaTheme) return;
@@ -97,11 +106,12 @@ function initThemeMetaColor() {
   };
 
   update();
-  const observer = new MutationObserver(update);
-  observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+  if (themeClassObserver) return;
+  themeClassObserver = new MutationObserver(update);
+  themeClassObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
 }
 
-function bootSite() {
+export function bootSite() {
   initFonts();
   initFaqFilters();
   initNavHighlight();
@@ -110,8 +120,14 @@ function bootSite() {
   initThemeMetaColor();
 }
 
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', bootSite);
-} else {
-  bootSite();
-}
+const scheduleBoot = () => {
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', bootSite, { once: true });
+  } else {
+    bootSite();
+  }
+};
+
+scheduleBoot();
+document.addEventListener('astro:page-load', bootSite);
+document.addEventListener('astro:after-swap', bootSite);

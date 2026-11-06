@@ -142,4 +142,6 @@ export function setupHeroEmbla() {
 
   run();
   document.addEventListener('astro:page-load', run);
+  // View Transitions / client navigations fire after-swap, not always page-load — same pattern as ProductScreenshotGallery.
+  document.addEventListener('astro:after-swap', run);
 }

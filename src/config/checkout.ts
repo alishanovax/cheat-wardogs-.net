@@ -9,7 +9,7 @@ export type CheckoutProduct = keyof typeof CHECKOUT;
 
 /** URL slug for /go/[slug]/ checkout redirect pages. */
 export const CHECKOUT_SLUGS: Record<CheckoutProduct, string> = {
-  apex: 'apex',
+  warDogs: 'war-dogs',
   skinChanger: 'skin-changer',
   hwidSpoofer: 'hwid-spoofer',
   ugc: 'ugc',
@@ -20,16 +20,16 @@ export const CHECKOUT_SLUG_TO_PRODUCT = Object.fromEntries(
 ) as Record<string, CheckoutProduct>;
 
 /** All Buy now / checkout CTAs use the same Zadeyo go link. */
-export function checkoutPath(_product: CheckoutProduct = 'apex'): string {
-  return CHECKOUT.apex;
+export function checkoutPath(_product: CheckoutProduct = 'warDogs'): string {
+  return CHECKOUT.warDogs;
 }
 
 /** Default product checkout redirect (replaces legacy Discord CTAs). */
-export const PRIMARY_CHECKOUT_PATH = checkoutPath('apex');
+export const PRIMARY_CHECKOUT_PATH = checkoutPath('warDogs');
 
 /** Map internal product slugs to checkout (single Zadeyo destination). */
 export function checkoutForSlug(_slug: string): string {
-  return CHECKOUT.apex;
+  return CHECKOUT.warDogs;
 }
 
 /** Resolve blog CTA or legacy href values to internal checkout paths. */
@@ -39,7 +39,7 @@ export function resolveCheckoutHref(href: string): string {
   if (!href.startsWith('http')) {
     const normalized = href.startsWith('/') ? href : `/${href}`;
     if (GO_CHECKOUT_PATH.test(normalized)) {
-      return CHECKOUT.apex;
+      return CHECKOUT.warDogs;
     }
     return normalized;
   }
@@ -51,7 +51,7 @@ export function resolveCheckoutHref(href: string): string {
   }
 
   if (href.includes('%2Fproducts%2Fcloud-dma') || href.includes('/products/cloud-dma')) {
-    return checkoutPath('apex');
+    return checkoutPath('warDogs');
   }
   if (href.includes('%2Fproducts%2Fskin-changer') || href.includes('/products/skin-changer')) {
     return checkoutPath('skinChanger');
@@ -64,15 +64,20 @@ export function resolveCheckoutHref(href: string): string {
   }
   if (
     href.includes('zadeyo.com/go/') ||
-    href.includes('%2Fapex-legends-cheats') ||
-    href.includes('/apex-legends-cheats') ||
+    href.includes('%2Fproducts%2Fwardogs') ||
+    href.includes('/products/wardogs') ||
+    href.includes('%2Fwar-dogs-cheats') ||
+    href.includes('/war-dogs-cheats') ||
+    href.includes('%2Fproducts%2Fwar-dogs') ||
+    href.includes('/products/war-dogs') ||
+    href.includes('/pd/wd') ||
     href.includes('%2Fproducts%2Fapex-legends') ||
     href.includes('/products/apex-legends') ||
     href.includes('%2Fproducts%2Frainbow-six-siege') ||
     href.includes('/products/rainbow-six-siege') ||
     href.includes('/products/mw4')
   ) {
-    return checkoutPath('apex');
+    return checkoutPath('warDogs');
   }
 
   return href;

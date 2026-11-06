@@ -1,5 +1,5 @@
 # Static Astro site — do not auto-add @astrojs/cloudflare (keeps output in dist/).
-name = "apexlegendcheats-net"
+name = "cheatwardogs-net"
 main = "worker/canonical-host.mjs"
 compatibility_date = "2025-10-11"
 
@@ -13,3 +13,8 @@ binding = "ASSETS"
 run_worker_first = true
 not_found_handling = "404-page"
 html_handling = "none"
+
+# Production hostname for JSON-LD + HTML canonical when you deploy to workers.dev.
+# Set CANONICAL_SITE_ORIGIN in the dashboard for preview builds (omit = use request host only).
+[vars]
+CANONICAL_SITE_ORIGIN = "https://cheatwardogs.net"

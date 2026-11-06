@@ -60,19 +60,20 @@ export function getFeaturedBlogPosts(limit = 3) {
 }
 
 /** Homepage blog strip — spread dates across the year (not only the newest month). */
+/** Curated homepage strip: buying guide, setup, feature list (order preserved). */
+export const FEATURED_BLOG_SLUGS = [
+  'war-dogs-game-cheats-explained',
+  'buy-war-dogs-cheats',
+  'war-dogs-cheat-setup',
+] as const;
+
 export function getHomepageBlogPosts(limit = 3) {
-  if (blogPosts.length <= limit) return [...blogPosts];
-  const sorted = [...blogPosts].sort(
-    (a, b) => getBlogPostTimestamp(b.date) - getBlogPostTimestamp(a.date),
-  );
-  const indices =
-    limit === 3
-      ? [0, Math.floor(sorted.length / 2), sorted.length - 1]
-      : sorted.map((_, i) => i).filter((_, i) => i % Math.ceil(sorted.length / limit) === 0);
-  const picked = indices.slice(0, limit).map((i) => sorted[i]!);
-  const unique = new Map<string, (typeof blogPosts)[0]>();
-  for (const post of picked) unique.set(post.slug, post);
-  return [...unique.values()];
+  const curated = getBlogPostsBySlugs([...FEATURED_BLOG_SLUGS]);
+  const used = new Set(curated.map((p) => p.slug));
+  const rest = [...blogPosts]
+    .filter((p) => !used.has(p.slug))
+    .sort((a, b) => getBlogPostTimestamp(b.date) - getBlogPostTimestamp(a.date));
+  return [...curated, ...rest].slice(0, limit);
 }
 
 export function getRelatedBlogPosts(slug: string, limit = 3) {

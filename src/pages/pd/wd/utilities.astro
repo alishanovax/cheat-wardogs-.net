@@ -18,17 +18,18 @@ import {
 } from '@/components/starwind/table';
 
 const utilities = productPages.filter((p) => p.kind === 'utility');
-const seo = resolvePageSeo('/products/apex/utilities/');
+const seo = resolvePageSeo('/pd/wd/utilities/');
+const utilitiesPath = `${productHub.path}utilities/`;
 const breadcrumbs = [
   { name: 'Home', path: '/' },
   { name: 'Products', path: productHub.path },
-  { name: 'Compare utilities', path: '/products/apex/utilities/' },
+  { name: 'Compare utilities', path: utilitiesPath },
 ];
 
 const utilityUseCases: Record<string, string> = {
-  'hwid-spoofer': 'New PC or hardware flag after a ban—reset how your machine appears before a new account.',
-  ugc: 'Structured appeal and account recovery workflows when access is restricted.',
-  'unlock-all': 'Local cosmetic preview and loadouts without buying every outfit on Steam.',
+  'hwid-spoofer': 'Hardware-oriented workflows when documentation says your ban type fits.',
+  ugc: 'Appeals, disputes, or case tracking when the seller lists UGC tooling.',
+  'unlock-all': 'Local cosmetic or loadout previews—may not affect server inventory.',
 };
 ---
 
@@ -37,9 +38,9 @@ const utilityUseCases: Record<string, string> = {
   description={seo.description}
   jsonLd={[
     webPageSchema({
-      name: 'Compare Apex Legends utilities',
+      name: 'Compare War Dogs utilities',
       description: seo.description,
-      url: '/products/apex/utilities/',
+      url: utilitiesPath,
     }),
     breadcrumbSchema(breadcrumbs),
     itemListSchema(
@@ -56,13 +57,13 @@ const utilityUseCases: Record<string, string> = {
 
       <header class="mt-6 max-w-3xl space-y-3">
         <h1 class="text-3xl font-bold normal-case md:text-4xl">
-          Compare utilities — local Legend loadout tools / Pack, HWID spoofer and UGC
+          Compare utilities — HWID workflows, appeal tooling, and loadout previews
         </h1>
         <p class="text-lg text-muted-foreground">
-          These Apex Legends cheat utilities solve different problems—HWID Spoofer, UGC, and Legend loadout tools each
-          target a distinct recovery or cosmetic workflow. Match the tool to your situation before checkout.
+          These War Dogs utilities address different recovery or cosmetic scenarios. Match the tool to your ticket type
+          and follow the seller listing—not guesswork.
         </p>
-        <h2 class="text-xl font-semibold text-foreground">Utilities: Apex Legends Cheats</h2>
+        <h2 class="text-xl font-semibold text-foreground">Utilities: War Dogs Cheats</h2>
       </header>
 
       <div class="mt-10 rounded-lg border border-border" tabindex="0" aria-label="Utility comparison">
@@ -113,7 +114,7 @@ const utilityUseCases: Record<string, string> = {
       </ul>
 
       <div class="mt-10">
-        <Button as="a" href={productHub.path} variant="outline">Return to Apex products hub</Button>
+        <Button as="a" href={productHub.path} variant="outline">Return to War Dogs products hub</Button>
       </div>
     </div>
   </section>
